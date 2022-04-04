@@ -139,12 +139,12 @@ class _NavigationDrawerScreenState extends State<NavigationDrawerScreen> {
               height: double.infinity,
               decoration: BoxDecoration(
                 color: Colors.white24,
-                border: Border.all(color: Colors.grey , width: 2),
               ),
               child: Column(
                 children: [
                   SizedBox (height: 15),
                   Container(
+                    height: 20,
                     alignment: Alignment.topLeft,
                       color: Colors.grey,
                       child: const Text(" Recently Played", textAlign: TextAlign.left,)
@@ -185,6 +185,8 @@ class _NavigationDrawerScreenState extends State<NavigationDrawerScreen> {
                     endIndent: 0,
                     color: Color.fromRGBO(196, 196, 196, 1),),
                   Container(
+                    height: 20,
+                      color: Colors.grey,
                       alignment: Alignment.centerLeft,
                       child: const Text(" More of what you like", textAlign: TextAlign.left,)
                   ),
