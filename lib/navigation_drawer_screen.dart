@@ -64,6 +64,7 @@ class _NavigationDrawerScreenState extends State<NavigationDrawerScreen> {
                             ),
                             child: Image.network("https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Soundcloud_logo.svg/440px-Soundcloud_logo.svg.png"),
                           ),
+                          const Divider(),
                           const Text("Navigation"),
                         ],
                       )
@@ -81,6 +82,7 @@ class _NavigationDrawerScreenState extends State<NavigationDrawerScreen> {
               ),
               const Divider(),
              const Text("Your profile", textAlign: TextAlign.center,),
+              const Divider(),
 
               ListTile(
                 leading: const Icon(Icons.add_reaction_outlined),
@@ -108,6 +110,7 @@ class _NavigationDrawerScreenState extends State<NavigationDrawerScreen> {
               ),
               const Divider(),
               const Text("Help center", textAlign: TextAlign.center,),
+              const Divider(),
               ListTile(
                 leading: const Icon(Icons.people_sharp),
                 title: const Text("About us"),
@@ -143,7 +146,7 @@ class _NavigationDrawerScreenState extends State<NavigationDrawerScreen> {
                   SizedBox (height: 5),
                   Container(
                     alignment: Alignment.topLeft,
-                      child: const Text("Recently Played", textAlign: TextAlign.left,)
+                      child: const Text(" Recently Played", textAlign: TextAlign.left,)
                   ),
                   SizedBox (height: 10),
                   Row(children: const [
@@ -182,7 +185,7 @@ class _NavigationDrawerScreenState extends State<NavigationDrawerScreen> {
                     color: Color.fromRGBO(196, 196, 196, 1),),
                   Container(
                       alignment: Alignment.centerLeft,
-                      child: const Text("More of what you like", textAlign: TextAlign.left,)
+                      child: const Text(" More of what you like", textAlign: TextAlign.left,)
                   ),
                   SizedBox (height: 10),
                   Row(children: const [
