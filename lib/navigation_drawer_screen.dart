@@ -143,9 +143,10 @@ class _NavigationDrawerScreenState extends State<NavigationDrawerScreen> {
               ),
               child: Column(
                 children: [
-                  SizedBox (height: 5),
+                  SizedBox (height: 15),
                   Container(
                     alignment: Alignment.topLeft,
+                      color: Colors.grey,
                       child: const Text(" Recently Played", textAlign: TextAlign.left,)
                   ),
                   SizedBox (height: 10),
