@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:widgets/stream_page.dart';
 import 'package:widgets/theme_screen.dart';
 
 import 'home_screen.dart';
@@ -15,13 +16,11 @@ class _NavigationDrawerScreenState extends State<NavigationDrawerScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final ButtonStyle buttonStyle =
-        TextButton.styleFrom(primary: Theme.of(context).colorScheme.onPrimary);
     return MaterialApp(
       scaffoldMessengerKey: _messengerKey,
       debugShowCheckedModeBanner: false,
       theme: MyTheme(),
-      home: MyHomeScreen(),
+      home: StreamPage(),
     );
   }
 }
