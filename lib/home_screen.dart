@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:widgets/list_view.dart';
 
 import 'my_app_bar.dart';
 
@@ -106,13 +107,15 @@ class MyHomeScreen extends StatelessWidget {
           ],
         ),
       ),
-      body: Container(
+      body:
+      Container(
         width: double.infinity,
         height: double.infinity,
         decoration: BoxDecoration(
           color: Colors.white24,
         ),
-        child: Column(children: [
+        child: Column(
+      children: [
           SizedBox(height: 15),
           Container(
               height: 20,
@@ -121,9 +124,12 @@ class MyHomeScreen extends StatelessWidget {
               child: const Text(
                 " Recently Played",
                 textAlign: TextAlign.left,
-              )),
+              )
+          ),
           SizedBox(height: 10),
+
           Row(
+
             children: const [
               SizedBox(
                 width: 20,
@@ -157,7 +163,7 @@ class MyHomeScreen extends StatelessWidget {
                 fallbackHeight: 90,
                 color: Colors.grey,
               ),
-            ],
+           ],
           ),
           SizedBox(height: 5),
           const Divider(
@@ -211,9 +217,9 @@ class MyHomeScreen extends StatelessWidget {
                 color: Colors.grey,
               ),
             ],
-          ),
+         ),
         ]),
       ),
-    );
+      );
   }
 }
