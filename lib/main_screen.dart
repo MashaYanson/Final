@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:widgets/auth_screen.dart';
 import 'package:widgets/stream_page.dart';
 import 'package:widgets/theme_screen.dart';
 import 'counter.dart';
 import 'home_screen.dart';
+
 
 class NavigationDrawerScreen extends StatefulWidget {
   const NavigationDrawerScreen({Key? key}) : super(key: key);
@@ -20,7 +22,7 @@ class _NavigationDrawerScreenState extends State<NavigationDrawerScreen> {
       scaffoldMessengerKey: _messengerKey,
       debugShowCheckedModeBanner: false,
       theme: MyTheme(),
-      home: const FilesDemoScreen(),
+      home: const CircularProgressIndicator(),
     );
   }
 }
