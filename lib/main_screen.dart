@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widgets/stream_page.dart';
 import 'package:widgets/theme_screen.dart';
-
 import 'counter.dart';
 import 'home_screen.dart';
 
@@ -21,7 +20,7 @@ class _NavigationDrawerScreenState extends State<NavigationDrawerScreen> {
       scaffoldMessengerKey: _messengerKey,
       debugShowCheckedModeBanner: false,
       theme: MyTheme(),
-      home: FilesDemoScreen(),
+      home: const FilesDemoScreen(),
     );
   }
 }

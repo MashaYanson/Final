@@ -32,9 +32,7 @@ class MyHomeScreen extends StatelessWidget {
                           decoration: const BoxDecoration(
                               borderRadius:
                               BorderRadius.all(Radius.circular(50.0))),
-                          child: Image.network(
-                              "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Soundcloud_logo.svg/440px-Soundcloud_logo.svg.png"),
-                        ),
+                            child: Image.asset("440px-Soundcloud_logo.svg.png") ),
                         const Divider(),
                         const Text("Navigation"),
                       ],
