@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:widgets/auth_screen.dart';
-import 'package:widgets/stream_page.dart';
-import 'package:widgets/theme_screen.dart';
-import 'counter.dart';
+import 'package:widgets/screens/auth_screen.dart';
+import 'package:widgets/screens/stream_page.dart';
+import 'package:widgets/themes/theme_screen.dart';
+import '../old/counter.dart';
 import 'home_screen.dart';
 
 
@@ -22,7 +22,7 @@ class _NavigationDrawerScreenState extends State<NavigationDrawerScreen> {
       scaffoldMessengerKey: _messengerKey,
       debugShowCheckedModeBanner: false,
       theme: MyTheme(),
-      home: const CircularProgressIndicator(),
+      home: const MyApp(),
     );
   }
 }

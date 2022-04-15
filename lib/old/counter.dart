@@ -1,16 +1,118 @@
+import 'dart:async';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:widgets/list_view.dart';
+import 'package:path_provider/path_provider.dart';
 
-import 'my_app_bar.dart';
+import '../components/my_app_bar.dart';
+
+class FilesDemoScreen extends StatelessWidget {
+  const FilesDemoScreen({Key? key}) : super(key: key);
 
 
-class MyHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    return MaterialApp(
+      home: FlutterDemo(storage: CounterStorage()),
+    );
+  }
+}
+
+
+class CounterStorage {
+  Future<String> get _localPath async {
+    final directory = await getApplicationDocumentsDirectory();
+
+
+    return directory.path;
+  }
+
+
+  Future<File> get _localFile async {
+    final path = await _localPath;
+    return File('$path/counter.txt');
+  }
+
+  Future<int> readCounter() async {
+    try {
+      final file = await _localFile;
+
+      // Read the file
+      final contents = await file.readAsString();
+
+      return int.parse(contents);
+    } catch (e) {
+      // If encountering an error, return 0
+      return 0;
+    }
+  }
+
+  Future<File> writeCounter(int counter) async {
+    final file = await _localFile;
+
+    // Write the file
+    return file.writeAsString('$counter');
+  }
+}
+
+class FlutterDemo extends StatefulWidget {
+  const FlutterDemo({Key? key, required this.storage}) : super(key: key);
+
+  final CounterStorage storage;
+
+  @override
+  _FlutterDemoState createState() => _FlutterDemoState();
+
+}
+
+
+
+class _FlutterDemoState extends State<FlutterDemo> {
+  int _counter = 0;
+  int _counter2 = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    widget.storage.readCounter().then((int value) {
+      setState(() {
+        _counter = value;
+      });
+    });
+  }
+
+  void initState2() {
+    super.initState();
+    widget.storage.readCounter().then((int value) {
+      setState(() {
+        _counter2 = value;
+      });
+    });
+  }
+
+  Future<File> _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+
+    // Write the variable as a string to the file.
+    return widget.storage.writeCounter(_counter);
+  }
+
+  Future<File> _incrementCounter2() {
+    setState(() {
+      _counter2++;
+    });
+
+    // Write the variable as a string to the file.
+    return widget.storage.writeCounter(_counter2);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+
     final _messengerKey = GlobalKey<ScaffoldMessengerState>();
 
-    final ButtonStyle buttonStyle =
-    TextButton.styleFrom(primary: Theme.of(context).colorScheme.onPrimary);
     return Scaffold(
       appBar: MyAppBar(context),
       drawer: Drawer(
@@ -32,7 +134,8 @@ class MyHomeScreen extends StatelessWidget {
                           decoration: const BoxDecoration(
                               borderRadius:
                               BorderRadius.all(Radius.circular(50.0))),
-                            child: Image.asset("440px-Soundcloud_logo.svg.png") ),
+                        child: Image.asset("440px-Soundcloud_logo.svg.png")
+                        ),
                         const Divider(),
                         const Text("Navigation"),
                       ],
@@ -106,118 +209,39 @@ class MyHomeScreen extends StatelessWidget {
         ),
       ),
       body:
-      Container(
-        width: double.infinity,
+          Container(width: double.infinity,
         height: double.infinity,
         decoration: BoxDecoration(
-          color: Colors.white24,
-        ),
-        child: Column(
-      children: [
-          SizedBox(height: 15),
-          Container(
-              height: 20,
-              alignment: Alignment.topLeft,
-              color: Theme.of(context).primaryColor,
-              child: const Text(
-                " Recently Played",
-                textAlign: TextAlign.left,
-              )
-          ),
-          SizedBox(height: 10),
-
-          Row(
-
-            children: const [
-              SizedBox(
-                width: 20,
+          color: Colors.white24,),
+            child: Column(
+            children: [
+              Text(
+                'Button 1 tapped $_counter time${_counter == 1 ? '' : 's'}.',
               ),
-              Placeholder(
-                fallbackWidth: 90,
-                fallbackHeight: 90,
-                color: Colors.grey,
-              ),
-              SizedBox(
-                width: 30,
-              ),
-              Placeholder(
-                fallbackWidth: 90,
-                fallbackHeight: 90,
-                color: Colors.grey,
-              ),
-              SizedBox(
-                width: 30,
-              ),
-              Placeholder(
-                fallbackWidth: 90,
-                fallbackHeight: 90,
-                color: Colors.grey,
-              ),
-              SizedBox(
-                width: 30,
-              ),
-              Placeholder(
-                fallbackWidth: 90,
-                fallbackHeight: 90,
-                color: Colors.grey,
-              ),
-           ],
-          ),
-          SizedBox(height: 5),
-          const Divider(
-            height: 20,
-            thickness: 0,
-            indent: 0,
-            endIndent: 0,
-            color: Color.fromRGBO(196, 196, 196, 1),
-          ),
-          Container(
-              height: 20,
-              color: Theme.of(context).primaryColor,
-              alignment: Alignment.centerLeft,
-              child: const Text(
-                " More of what you like",
-                textAlign: TextAlign.left,
-              )),
-          SizedBox(height: 10),
-          Row(
-            children: const [
-              SizedBox(
-                width: 20,
-              ),
-              Placeholder(
-                fallbackWidth: 90,
-                fallbackHeight: 90,
-                color: Colors.grey,
-              ),
-              SizedBox(
-                width: 30,
-              ),
-              Placeholder(
-                fallbackWidth: 90,
-                fallbackHeight: 90,
-                color: Colors.grey,
-              ),
-              SizedBox(
-                width: 30,
-              ),
-              Placeholder(
-                fallbackWidth: 90,
-                fallbackHeight: 90,
-                color: Colors.grey,
-              ),
-              SizedBox(
-                width: 30,
-              ),
-              Placeholder(
-                fallbackWidth: 90,
-                fallbackHeight: 90,
-                color: Colors.grey,
-              ),
-            ],
-         ),
-        ]),
+             Text(
+              'Button 2 tapped $_counter2 time${_counter2 == 1 ? '' : 's'}.',
+            ),
+        ],
+            ),
       ),
-      );
+
+      floatingActionButton:
+      Column( mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+      ),
+        SizedBox(
+          height: 10,),
+       FloatingActionButton(
+        onPressed: _incrementCounter2,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+       ),
+        ]
+      ),
+    );
   }
 }

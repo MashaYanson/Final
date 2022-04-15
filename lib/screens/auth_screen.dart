@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
     );
 
     return MaterialApp(
+      title: "Named Routes",
       home: Scaffold(
           body: Container(
             width: double.infinity,
@@ -60,7 +61,9 @@ class MyApp extends StatelessWidget {
                 ),
                 SizedBox (height: 30,),
                 SizedBox(width: 154, height: 42, child:
-                ElevatedButton(onPressed: () {},
+                ElevatedButton(onPressed: () {
+
+                },
                   child: Text('Log In'),
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(

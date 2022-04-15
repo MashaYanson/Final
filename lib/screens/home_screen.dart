@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:widgets/home_screen.dart';
-import 'package:widgets/list_view.dart';
-import 'my_app_bar.dart';
+import 'package:widgets/components/list_view.dart';
 
-class StreamPage extends StatelessWidget {
-  const StreamPage({Key? key}) : super(key: key);
+import '../components/my_app_bar.dart';
 
+
+class MyHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _messengerKey = GlobalKey<ScaffoldMessengerState>();
@@ -33,7 +32,7 @@ class StreamPage extends StatelessWidget {
                           decoration: const BoxDecoration(
                               borderRadius:
                               BorderRadius.all(Radius.circular(50.0))),
-                          child: Image.asset("440px-Soundcloud_logo.svg.png") ),
+                            child: Image.asset("440px-Soundcloud_logo.svg.png") ),
                         const Divider(),
                         const Text("Navigation"),
                       ],
@@ -106,14 +105,119 @@ class StreamPage extends StatelessWidget {
           ],
         ),
       ),
-      body: Container(
-      width: double.infinity,
-    height: double.infinity,
-    decoration: BoxDecoration(
-    color: Colors.white24,
-    ),
-        child: Mylist(),
+      body:
+      Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(
+          color: Colors.white24,
+        ),
+        child: Column(
+      children: [
+          SizedBox(height: 15),
+          Container(
+              height: 20,
+              alignment: Alignment.topLeft,
+              color: Theme.of(context).primaryColor,
+              child: const Text(
+                " Recently Played",
+                textAlign: TextAlign.left,
+              )
+          ),
+          SizedBox(height: 10),
+
+          Row(
+
+            children: const [
+              SizedBox(
+                width: 20,
+              ),
+              Placeholder(
+                fallbackWidth: 90,
+                fallbackHeight: 90,
+                color: Colors.grey,
+              ),
+              SizedBox(
+                width: 30,
+              ),
+              Placeholder(
+                fallbackWidth: 90,
+                fallbackHeight: 90,
+                color: Colors.grey,
+              ),
+              SizedBox(
+                width: 30,
+              ),
+              Placeholder(
+                fallbackWidth: 90,
+                fallbackHeight: 90,
+                color: Colors.grey,
+              ),
+              SizedBox(
+                width: 30,
+              ),
+              Placeholder(
+                fallbackWidth: 90,
+                fallbackHeight: 90,
+                color: Colors.grey,
+              ),
+           ],
+          ),
+          SizedBox(height: 5),
+          const Divider(
+            height: 20,
+            thickness: 0,
+            indent: 0,
+            endIndent: 0,
+            color: Color.fromRGBO(196, 196, 196, 1),
+          ),
+          Container(
+              height: 20,
+              color: Theme.of(context).primaryColor,
+              alignment: Alignment.centerLeft,
+              child: const Text(
+                " More of what you like",
+                textAlign: TextAlign.left,
+              )),
+          SizedBox(height: 10),
+          Row(
+            children: const [
+              SizedBox(
+                width: 20,
+              ),
+              Placeholder(
+                fallbackWidth: 90,
+                fallbackHeight: 90,
+                color: Colors.grey,
+              ),
+              SizedBox(
+                width: 30,
+              ),
+              Placeholder(
+                fallbackWidth: 90,
+                fallbackHeight: 90,
+                color: Colors.grey,
+              ),
+              SizedBox(
+                width: 30,
+              ),
+              Placeholder(
+                fallbackWidth: 90,
+                fallbackHeight: 90,
+                color: Colors.grey,
+              ),
+              SizedBox(
+                width: 30,
+              ),
+              Placeholder(
+                fallbackWidth: 90,
+                fallbackHeight: 90,
+                color: Colors.grey,
+              ),
+            ],
+         ),
+        ]),
       ),
-    );
+      );
   }
 }

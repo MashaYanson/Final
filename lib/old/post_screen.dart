@@ -3,8 +3,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:widgets/my_app_bar.dart';
-import 'package:widgets/theme_screen.dart';
+import 'package:widgets/components/my_app_bar.dart';
+import 'package:widgets/themes/theme_screen.dart';
 
 
 

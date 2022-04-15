@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 
-import 'my_app_bar.dart';
+import '../components/my_app_bar.dart';
 
 class FilesDemoScreen extends StatelessWidget {
   const FilesDemoScreen({Key? key}) : super(key: key);
@@ -22,7 +22,6 @@ class FilesDemoScreen extends StatelessWidget {
 class CounterStorage {
   Future<String> get _localPath async {
     final directory = await getApplicationDocumentsDirectory();
-
 
     return directory.path;
   }
@@ -69,7 +68,6 @@ class FlutterDemo extends StatefulWidget {
 
 class _FlutterDemoState extends State<FlutterDemo> {
   int _counter = 0;
-  int _counter2 = 0;
 
   @override
   void initState() {
@@ -77,15 +75,6 @@ class _FlutterDemoState extends State<FlutterDemo> {
     widget.storage.readCounter().then((int value) {
       setState(() {
         _counter = value;
-      });
-    });
-  }
-
-  void initState2() {
-    super.initState();
-    widget.storage.readCounter().then((int value) {
-      setState(() {
-        _counter2 = value;
       });
     });
   }
@@ -99,14 +88,6 @@ class _FlutterDemoState extends State<FlutterDemo> {
     return widget.storage.writeCounter(_counter);
   }
 
-  Future<File> _incrementCounter2() {
-    setState(() {
-      _counter2++;
-    });
-
-    // Write the variable as a string to the file.
-    return widget.storage.writeCounter(_counter2);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -134,7 +115,8 @@ class _FlutterDemoState extends State<FlutterDemo> {
                           decoration: const BoxDecoration(
                               borderRadius:
                               BorderRadius.all(Radius.circular(50.0))),
-                        child: Image.asset("440px-Soundcloud_logo.svg.png")
+                          child: Image.network(
+                              "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Soundcloud_logo.svg/440px-Soundcloud_logo.svg.png"),
                         ),
                         const Divider(),
                         const Text("Navigation"),
@@ -208,39 +190,15 @@ class _FlutterDemoState extends State<FlutterDemo> {
           ],
         ),
       ),
-      body:
-          Container(width: double.infinity,
-        height: double.infinity,
-        decoration: BoxDecoration(
-          color: Colors.white24,),
-            child: Column(
-            children: [
-              Text(
-                'Button 1 tapped $_counter time${_counter == 1 ? '' : 's'}.',
-              ),
-             Text(
-              'Button 2 tapped $_counter2 time${_counter2 == 1 ? '' : 's'}.',
-            ),
-        ],
-            ),
+      body: Center(
+        child: Text(
+          'Button tapped $_counter time${_counter == 1 ? '' : 's'}.',
+        ),
       ),
-
-      floatingActionButton:
-      Column( mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        FloatingActionButton(
+      floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ),
-        SizedBox(
-          height: 10,),
-       FloatingActionButton(
-        onPressed: _incrementCounter2,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-       ),
-        ]
       ),
     );
   }
